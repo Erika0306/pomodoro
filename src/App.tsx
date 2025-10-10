@@ -3,23 +3,35 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return(
+    <div style={{position: 'relative'}}>
+  
+      <div>
+        <button className="closeButton">
+          Close
+        </button>
+      </div>
+
+      <div className="home-content">
+        <div className="home-controls">
+          <button className="image-button">
+            Work
+          </button>
+          <button className="imagene-button">
+            Break
+          </button>
+        </div>
+
+          <p>
+            You can do it!
+          </p>
+          <h1 className="home-timer"> 25:00</h1>
+          <button className="home-button">
+            Start
+          </button>
+      </div>
     </div>
+    
   );
 }
 
