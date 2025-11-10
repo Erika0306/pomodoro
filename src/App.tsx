@@ -1,13 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 
+import playImg from "./assets/play.png";
+import resetImg from "./assets/reset.png";
+import workBtnClicked from "./assets/work-clicked.png";
+import workBtn from "./assets/work.png";
+import breakBtnClicked from "./assets/break-clicked.png";
+import breakBtn from "./assets/break.png";
+import idleGif from "./assets/idle.gif";
+import workGif from "./assets/work.gif";
+import breakGif from "./assets/break.gif";
+import meowSound from "./assets/meow.mp3";
+import closeBtn from "./assets/close.png";
+
 function App() {
   const [timeLeft, setTimeLeft] = useState(25*60); //Un hook de react crear una variable con estado dentro de un componente funcional.
-  const [isRunning, setIsRunning] = useState(false); 
+  const [isRunning, setIsRunning] = useState(false);
+  const [breakButtonImage, setBreakButtonImage] = useState(breakBtn);
+  const [workButtonImage, setWorkButtonImage] = useState(workBtn); 
+  const [gifImage, setGifImage] = useState(idleGif);
   const [isBreak, setIsBreak] = useState(false);
   const [encouragement,setEncouragement] = useState("");
+  const [image, setImage] = useState(playImg);
+  const meowAudio = new Audio (meowSound);
+
 
   const cheersMessages = [
     "You can do it",
@@ -36,6 +53,7 @@ function App() {
     }
     return () => clearInterval(messageInterval);
   }, [isRunning,isBreak]);
+
   // Cuenta regresiva 
   useEffect ( () => { //Hook 
     let timer: NodeJS.Timeout; //Almacenar el temporizador
@@ -47,6 +65,24 @@ function App() {
     return() => clearInterval(timer);
   },[isRunning, timeLeft]);
 
+  //inicial falso 
+  useEffect(() => {
+    switchMode(false);
+  },[])
+
+  //Sonido 
+  useEffect(() => {
+    if (timeLeft === 0 && isRunning) {
+        meowAudio.play().catch(err => {
+            console.error("Audio play failed:", err);
+        });
+        setIsRunning(false); // Optional: auto-stop the timer
+        setImage(playImg);   // Reset to play button
+        setGifImage(idleGif); // Reset to idle gif
+        setTimeLeft(isBreak ? 5 * 60 : 25 * 60);
+    }
+}, [timeLeft]);
+
   const fromatTime = (seconds: number): string => {
     const m = Math.floor(seconds / 60).toString().padStart(2,'0'); // padStart para que tenga 2 digitos 
 
@@ -57,30 +93,50 @@ function App() {
   const switchMode = (breakMode: boolean) => {
     setIsBreak(breakMode); // True Break False Work 
     setIsRunning(false); // Para que el nuevo contador no corra de inmediato 
+    setBreakButtonImage( breakMode ? breakBtnClicked : breakBtn);
+    setWorkButtonImage(breakMode ? workBtn : workBtnClicked);
     setTimeLeft(breakMode ? 5* 60 : 25* 60 );
-
+    setGifImage(idleGif)
   }
   
   const handleClick = () => {
-  setIsRunning(!isRunning); // Cambia entre iniciar y pausar
+    if (!isRunning) {
+      setIsRunning(true);
+      setGifImage (isBreak ? breakGif : workGif)
+      setImage(resetImg);
+
+    }else{
+      setIsRunning(false);
+      setTimeLeft(isBreak ? 5 * 60 : 25 * 60);
+      setGifImage(idleGif);
+      setImage(playImg);
+    }
   };
 
+  const handleCloseClick = () => {
+    if (window.electronAPI?.closeApp) {
+      window.electronAPI.closeApp();
+    } else {
+      console.warn("Electron API not available");
+    }
+  }
 
+  const containerClass = `home-container ${isRunning? "background-green" : ""}`;
   return(
-    <div style={{position: 'relative'}}>
+    <div className = {containerClass} style={{position: 'relative'}}>
       <div>
-        <button className="closeButton">
-          Close
+        <button className="close-button" onClick={handleCloseClick}>
+          <img src={closeBtn} alt="Close" />
         </button>
       </div>
 
       <div className="home-content">
         <div className="home-controls">
           <button className="image-button" onClick={ () => switchMode(false)}>
-            Work
+            <img src={workButtonImage} alt="Work" />
           </button>
-          <button className="imagene-button" onClick={ () => switchMode(true)}>
-            Break
+          <button className="image-button" onClick={ () => switchMode(true)}>
+            <img src={breakButtonImage} alt="Break" />
           </button>
         </div>
 
@@ -88,8 +144,9 @@ function App() {
             {encouragement}
           </p>
           <h1 className="home-timer">{fromatTime(timeLeft)}</h1>
+          <img src={gifImage} alt="Timer Status" className="gif-image" />
           <button className="home-button" onClick={handleClick}>
-            Start
+            <img src={image} alt="Button Icon" />
           </button>
       </div>
     </div>
