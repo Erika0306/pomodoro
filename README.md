@@ -2,9 +2,9 @@
 
 Una aplicación de escritorio moderna para gestionar tu tiempo utilizando la **técnica Pomodoro**. Construida con React, TypeScript y Electron.
 
-> 📺 **Proyecto basado en:** [Crear una aplicación Pomodoro con React](https://youtu.be/K9eHZugy6lc?si=4SufbgHikuSAgAaL)
+>  **Proyecto basado en:** [Crear una aplicación Pomodoro con React](https://youtu.be/K9eHZugy6lc?si=4SufbgHikuSAgAaL)
 
-## 📋 Tabla de Contenidos
+##  Tabla de Contenidos
 
 - [Características](#características)
 - [Requisitos](#requisitos)
@@ -16,19 +16,19 @@ Una aplicación de escritorio moderna para gestionar tu tiempo utilizando la **t
 
 ## ✨ Características
 
-- ⏱️ **Timer Pomodoro**: Sesiones de trabajo de 25 minutos con descansos
-- 🎯 **Fácil de usar**: Interfaz intuitiva y limpia
-- 💻 **Aplicación de Escritorio**: Construida con Electron
-- 🎨 **Responsive**: Diseño adaptable a diferentes tamaños de pantalla
-- ⚛️ **React + TypeScript**: Código tipado y mantenible
-- 🧪 **Totalmente Testeada**: Suite de pruebas incluida
+- **Timer Pomodoro**: Sesiones de trabajo de 25 minutos con descansos
+- **Fácil de usar**: Interfaz intuitiva y limpia
+- **Aplicación de Escritorio**: Construida con Electron
+- **Responsive**: Diseño adaptable a diferentes tamaños de pantalla
+- **React + TypeScript**: Código tipado y mantenible
+- **Totalmente Testeada**: Suite de pruebas incluida
 
 ## 📋 Requisitos
 
 - **Node.js** v14 o superior
 - **npm** v6 o superior
 
-## 🚀 Instalación
+## 🚀Instalación
 
 1. **Clonar el repositorio**
 ```bash
@@ -41,7 +41,7 @@ cd pomodoro
 npm install
 ```
 
-## 💻 Uso
+## Uso
 
 ### Modo Desarrollo (Web)
 
@@ -113,7 +113,7 @@ pomodoro/
 
 El proyecto utiliza TypeScript para mayor seguridad de tipos. Consulta `tsconfig.json` para ver la configuración.
 
-## 🔧 Tecnologías
+## Tecnologías
 
 ### Frontend
 - **React** ^19.2.0 - Librería de UI
@@ -130,11 +130,11 @@ El proyecto utiliza TypeScript para mayor seguridad de tipos. Consulta `tsconfig
 ### Build
 - **React Scripts** 5.0.1 - Herramientas de build
 
-## 📝 Licencia
+## Licencia
 
 Este proyecto está disponible bajo la licencia MIT.
 
-## 👤 Autor
+## Autor
 
 **Erika0306**
 
