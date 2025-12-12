@@ -23,12 +23,12 @@ Una aplicación de escritorio moderna para gestionar tu tiempo utilizando la **t
 - **React + TypeScript**: Código tipado y mantenible
 - **Totalmente Testeada**: Suite de pruebas incluida
 
-## 📋 Requisitos
+## Requisitos
 
 - **Node.js** v14 o superior
 - **npm** v6 o superior
 
-## 🚀Instalación
+## Instalación
 
 1. **Clonar el repositorio**
 ```bash
@@ -77,7 +77,7 @@ Para ejecutar la suite de pruebas:
 npm test
 ```
 
-## 🛠️ Desarrollo
+## Desarrollo
 
 ### Estructura del Proyecto
 
@@ -143,4 +143,4 @@ Este proyecto está disponible bajo la licencia MIT.
 
 ---
 
-**¡Mejora tu productividad con la Técnica Pomodoro! 🍅⏱️**
+**¡Mejora tu productividad con la Técnica Pomodoro! ⏱️**
