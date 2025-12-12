@@ -132,9 +132,6 @@ El proyecto utiliza TypeScript para mayor seguridad de tipos. Consulta `tsconfig
 ### Build
 - **React Scripts** 5.0.1 - Herramientas de build
 
-## Licencia
-
-Este proyecto está disponible bajo la licencia MIT.
 
 ## Autor
 
